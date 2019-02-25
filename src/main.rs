@@ -9,4 +9,10 @@ fn main() {
     };
 
     let mut state = state_machine::State::from_sequence(code.lines());
+
+    println!("{}", state);
+
+    state.next();
+
+    println!("{}", state);
 }

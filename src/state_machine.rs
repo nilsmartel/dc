@@ -20,6 +20,15 @@ enum Operator {
     Mod,
 }
 
+impl<'a, T> std::fmt::Display for State<'a, T>
+where
+    T: Iterator<Item = &'a str>,
+{
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> Result<(), std::fmt::Error> {
+        write!(f, "{:?}", self.stack)
+    }
+}
+
 impl Operator {
     fn operate<'a, T>(self, state: &mut State<'a, T>) -> i32
     where
@@ -61,7 +70,7 @@ where
                 "-" => Instruction::Operation(Operator::Sub),
                 "*" => Instruction::Operation(Operator::Mul),
                 "/" => Instruction::Operation(Operator::Div),
-                "%" => Instruction::Operation(Operator::Mul),
+                "%" => Instruction::Operation(Operator::Mod),
                 n => Instruction::Value(n.parse::<i32>().expect("Failed to parse number")),
             };
 
