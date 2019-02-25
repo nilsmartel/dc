@@ -78,7 +78,7 @@ where
                 Some(instruction) => match instruction {
                     Instruction::Value(x) => self.stack.push(x),
                     Instruction::Operation(op) => {
-                        let result = op.operate(&mut self);
+                        let result = op.operate(self);
                         self.stack.push(result);
                         return Some(result);
                     }
