@@ -3,7 +3,7 @@ mod state_machine;
 
 fn main() {
     let code = if let Some(filename) = std::env::args().nth(1) {
-        io::read_file(&filename).expect("Failed to read file")
+        io::read_file(&filename).expect(&format!("Failed to read file {}", filename))
     } else {
         io::read_stdin()
     };
