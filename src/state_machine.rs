@@ -35,7 +35,7 @@ impl Operator {
         T: Iterator<Item = &'a str>,
     {
         let input: Vec<i32> = (0..self.required_input_count())
-            .map(|_| state.next().expect("Unexpected empty Stack"))
+            .map(|_| state.stack.pop().expect("Unexpected empty Stack"))
             .collect();
 
         match self {
@@ -80,7 +80,7 @@ where
         None
     }
 
-    pub fn next(&mut self) -> Option<i32> {
+    pub fn next_operation(&mut self) -> Option<i32> {
         loop {
             match self.parse_instruction() {
                 None => return None,

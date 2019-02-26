@@ -10,9 +10,10 @@ fn main() {
 
     let mut state = state_machine::State::from_sequence(code.lines());
 
-    println!("{}", state);
-
-    state.next();
-
-    println!("{}", state);
+    loop {
+        match state.next_operation() {
+            Some(value) => println!("{}", value),
+            None => break,
+        }
+    }
 }
