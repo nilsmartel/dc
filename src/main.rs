@@ -12,7 +12,7 @@ fn main() {
 
     loop {
         match state.next_operation() {
-            Some(value) => println!("{}", value),
+            Some(value) => println!("{:?}", value),
             None => break,
         }
     }
