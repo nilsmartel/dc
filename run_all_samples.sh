@@ -1,4 +1,7 @@
+cargo build --release
 for test in $(ls samples)
 do
-    cargo run samples/$test
+    echo "running: $ dc samples/$test"
+    target/release/dc samples/$test
+    echo 
 done
