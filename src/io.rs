@@ -1,11 +1,12 @@
 use std::fs::File;
 use std::io::{stdin, Read};
 
-pub fn read_stdin() -> String {
+pub fn read_stdin() -> Option<String> {
     let mut buffer = String::new();
-    let _ = stdin().read_to_string(&mut buffer);
-
-    buffer
+    match stdin().read_to_string(&mut buffer) {
+        Ok(_) => Some(buffer),
+        _ => None,
+    }
 }
 
 pub fn read_file(filename: &str) -> Option<String> {

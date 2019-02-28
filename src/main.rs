@@ -20,6 +20,6 @@ fn get_code() -> String {
     if let Some(filename) = std::env::args().nth(1) {
         io::read_file(&filename).expect(&format!("Failed to read file {}", filename))
     } else {
-        io::read_stdin()
+        io::read_stdin().expect("Failed to read from stdin")
     }
 }
